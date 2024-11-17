@@ -2,6 +2,7 @@
     "Imagem": "https://lumiere-a.akamaihd.net/v1/images/cabuck-main_ec94a0a0.jpeg?region=53%2C0%2C1430%2C804&width=320",
     "Nome": "Cabuck",
     "Descrição": "The proprietor and barkeep at the Lomi Usqi Noodle Shop, Cabuck keeps the bowls of noodles flowing at his rundown establishment on Ueda. Sometimes he brings his child, Cabuck Junior, to work.",
+    "História": null,
     "Aparições": [
         "Star Wars: The Acolyte"
     ],
@@ -9,5 +10,8 @@
         "Height: 1.93m"
     ],
     "Espécie": [],
-    "Afiliações": []
+    "Afiliações": [],
+    "Locais": [],
+    "Armas": [],
+    "Gênero": []
 }
