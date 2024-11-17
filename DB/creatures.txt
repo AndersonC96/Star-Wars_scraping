@@ -1,2 +1,3 @@
 https://www.starwars.com/databank/dybbuk
 https://www.starwars.com/databank/skura
+https://www.starwars.com/databank/umbramoth
