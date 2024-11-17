@@ -4,14 +4,14 @@ import json
 import os
 
 # Define o diretório onde os arquivos serão salvos
-directory = './DB/Locations'
+directory = './DB/Characters'
 
 # Cria o diretório se ele não existir
 if not os.path.exists(directory):
     os.makedirs(directory)
 
 # Nome do arquivo que contém a lista de URLs
-url_list_file = './DB/locations.txt'
+url_list_file = './DB/characters.txt'
 
 # Verifica se o arquivo de URLs existe
 if not os.path.isfile(url_list_file):
@@ -60,12 +60,17 @@ else:
                 else:
                     data['Descrição'] = None
 
-                # Inicializa listas para Aparições, Locais, Clima, Terreno e Espécies
+                # Inicializa listas para novos campos
                 appearances = []
                 locais = []
                 clima = []
                 terreno = []
                 species = []
+                afiliacoes = []
+                criaturas = []
+                droids = []
+                veiculos = []
+                armas = []
 
                 # Encontrar todos os divs com a classe 'category'
                 categories = soup.find_all('div', {'class': 'category'})
@@ -73,51 +78,31 @@ else:
                     heading = category.find('div', {'class': 'heading'})
                     if heading:
                         heading_text = heading.get_text(strip=True)
-                        if heading_text == 'Appearances':
-                            # Extrai as aparições
-                            ul = category.find('ul')
-                            if ul:
-                                li_tags = ul.find_all('li', {'class': 'data'})
-                                for li in li_tags:
-                                    property_name = li.find('div', {'class': 'property-name'})
-                                    if property_name:
-                                        appearances.append(property_name.get_text(strip=True))
-                        elif heading_text == 'Locations':
-                            # Extrai os locais
-                            ul = category.find('ul')
-                            if ul:
-                                li_tags = ul.find_all('li', {'class': 'data'})
-                                for li in li_tags:
-                                    property_name = li.find('div', {'class': 'property-name'})
-                                    if property_name:
-                                        locais.append(property_name.get_text(strip=True))
-                        elif heading_text == 'Climate':
-                            # Extrai o clima
-                            ul = category.find('ul')
-                            if ul:
-                                li_tags = ul.find_all('li', {'class': 'data'})
-                                for li in li_tags:
-                                    property_name = li.find('div', {'class': 'property-name'})
-                                    if property_name:
-                                        clima.append(property_name.get_text(strip=True))
-                        elif heading_text == 'Terrain':
-                            # Extrai o terreno
-                            ul = category.find('ul')
-                            if ul:
-                                li_tags = ul.find_all('li', {'class': 'data'})
-                                for li in li_tags:
-                                    property_name = li.find('div', {'class': 'property-name'})
-                                    if property_name:
-                                        terreno.append(property_name.get_text(strip=True))
-                        elif heading_text.lower() == 'species':
-                            # Extrai as espécies
-                            ul = category.find('ul')
-                            if ul:
-                                li_tags = ul.find_all('li', {'class': 'data'})
-                                for li in li_tags:
-                                    property_name = li.find('div', {'class': 'property-name'})
-                                    if property_name:
-                                        species.append(property_name.get_text(strip=True))
+                        ul = category.find('ul')
+                        if ul:
+                            li_tags = ul.find_all('li', {'class': 'data'})
+                            for li in li_tags:
+                                property_name = li.find('div', {'class': 'property-name'})
+                                if heading_text == 'Appearances' and property_name:
+                                    appearances.append(property_name.get_text(strip=True))
+                                elif heading_text == 'Locations' and property_name:
+                                    locais.append(property_name.get_text(strip=True))
+                                elif heading_text == 'Climate' and property_name:
+                                    clima.append(property_name.get_text(strip=True))
+                                elif heading_text == 'Terrain' and property_name:
+                                    terreno.append(property_name.get_text(strip=True))
+                                elif heading_text.lower() == 'species' and property_name:
+                                    species.append(property_name.get_text(strip=True))
+                                elif heading_text == 'Affiliations' and property_name:
+                                    afiliacoes.append(property_name.get_text(strip=True))
+                                elif heading_text == 'Creature' and property_name:
+                                    criaturas.append(property_name.get_text(strip=True))
+                                elif heading_text.lower() == 'droid' and property_name:
+                                    droids.append(property_name.get_text(strip=True))
+                                elif heading_text == 'Vehicles' and property_name:
+                                    veiculos.append(property_name.get_text(strip=True))
+                                elif heading_text == 'Weapons' and property_name:
+                                    armas.append(property_name.get_text(strip=True))
 
                 # Adiciona as informações extraídas ao dicionário de dados
                 data['Aparições'] = appearances
@@ -125,6 +110,11 @@ else:
                 data['Clima'] = clima
                 data['Terreno'] = terreno
                 data['Espécies'] = species
+                data['Afiliações'] = afiliacoes
+                data['Criaturas'] = criaturas
+                data['Droid'] = droids
+                data['Veículos'] = veiculos
+                data['Armas'] = armas
 
                 # Nome do arquivo baseado no nome do personagem
                 if data['Nome']:
