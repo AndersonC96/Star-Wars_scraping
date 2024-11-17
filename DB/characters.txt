@@ -17,7 +17,6 @@ https://www.starwars.com/databank/osha
 https://www.starwars.com/databank/pip
 https://www.starwars.com/databank/senator-isedwa-chuwant
 https://www.starwars.com/databank/senator-rayencourt
-https://www.starwars.com/databank/skura
 https://www.starwars.com/databank/sol
 https://www.starwars.com/databank/tasi-lowa
 https://www.starwars.com/databank/qimir
