@@ -4,7 +4,7 @@ import json
 import os
 
 # URL da página que queremos fazer o scraping
-url = "https://www.starwars.com/databank/barash-vow"
+url = "https://www.starwars.com/databank/cabuck"
 
 # Faz uma requisição HTTP GET para a URL
 response = requests.get(url)
@@ -40,27 +40,78 @@ if response.status_code == 200:
     else:
         data['Descrição'] = None
 
-    # Extrai as aparições
+    # Inicializa as listas para aparições, dimensões, espécie e afiliações
     appearances = []
+    dimensions = []
+    species = []
+    afiliacoes = []
+
     # Encontrar todos os divs com a classe 'category'
     categories = soup.find_all('div', {'class': 'category'})
     for category in categories:
         heading = category.find('div', {'class': 'heading'})
-        if heading and heading.get_text(strip=True) == 'Appearances':
-            # Encontrou a seção de aparições
-            ul = category.find('ul')
-            if ul:
-                li_tags = ul.find_all('li', {'class': 'data'})
-                for li in li_tags:
-                    a_tag = li.find('a', {'class': 'section-color'})
-                    if a_tag:
-                        property_name = a_tag.find('div', {'class': 'property-name'})
+        if heading:
+            heading_text = heading.get_text(strip=True)
+            if heading_text == 'Appearances':
+                # Extrai as aparições
+                ul = category.find('ul')
+                if ul:
+                    li_tags = ul.find_all('li', {'class': 'data'})
+                    for li in li_tags:
+                        a_tag = li.find('a', {'class': 'section-color'})
+                        if a_tag:
+                            property_name = a_tag.find('div', {'class': 'property-name'})
+                            if property_name:
+                                appearance_name = property_name.get_text(strip=True)
+                                appearances.append(appearance_name)
+                        else:
+                            property_name = li.find('div', {'class': 'property-name'})
+                            if property_name:
+                                appearance_name = property_name.get_text(strip=True)
+                                appearances.append(appearance_name)
+            elif heading_text == 'Dimensions':
+                # Extrai as dimensões
+                ul = category.find('ul')
+                if ul:
+                    li_tags = ul.find_all('li', {'class': 'data'})
+                    for li in li_tags:
+                        property_name = li.find('div', {'class': 'property-name'})
                         if property_name:
-                            appearance_name = property_name.get_text(strip=True)
-                            appearances.append(appearance_name)
-            break  # Já encontramos a seção de aparições, podemos sair do loop
+                            dimension = property_name.get_text(strip=True)
+                            dimensions.append(dimension)
+            elif heading_text.lower() == 'species':
+                # Extrai a espécie
+                ul = category.find('ul')
+                if ul:
+                    li_tags = ul.find_all('li', {'class': 'data'})
+                    for li in li_tags:
+                        property_name = li.find('div', {'class': 'property-name'})
+                        if property_name:
+                            specie = property_name.get_text(strip=True)
+                            species.append(specie)
+            elif heading_text == 'Affiliations':
+                # Extrai as afiliações
+                ul = category.find('ul')
+                if ul:
+                    li_tags = ul.find_all('li', {'class': 'data'})
+                    for li in li_tags:
+                        a_tag = li.find('a', {'class': 'section-color'})
+                        if a_tag:
+                            property_name = a_tag.find('div', {'class': 'property-name'})
+                            if property_name:
+                                affiliation_name = property_name.get_text(strip=True)
+                                afiliacoes.append(affiliation_name)
+                        else:
+                            property_name = li.find('div', {'class': 'property-name'})
+                            if property_name:
+                                affiliation_name = property_name.get_text(strip=True)
+                                afiliacoes.append(affiliation_name)
 
+    # Adiciona as informações extraídas ao dicionário de dados
     data['Aparições'] = appearances
+    data['Dimensões'] = dimensions
+    data['Espécie'] = species
+    data['Afiliações'] = afiliacoes
 
     # Define o diretório onde o arquivo será salvo
     directory = './DB/The Acolyte'
