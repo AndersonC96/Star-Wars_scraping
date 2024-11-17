@@ -2,6 +2,7 @@
     "Imagem": "https://lumiere-a.akamaihd.net/v1/images/captain-blex-main_0ed43ce8.jpeg?region=490%2C0%2C1430%2C804&width=320",
     "Nome": "Captain Blex",
     "Descrição": "As captain of the Fallon freighter, Blex disregards Republic rules and prioritizes profits over the lives of his hired hands.",
+    "História": null,
     "Aparições": [
         "Star Wars: The Acolyte"
     ],
@@ -9,5 +10,8 @@
         "Height: 2.13m"
     ],
     "Espécie": [],
-    "Afiliações": []
+    "Afiliações": [],
+    "Locais": [],
+    "Armas": [],
+    "Gênero": []
 }
