@@ -2,6 +2,7 @@
     "Imagem": "https://lumiere-a.akamaihd.net/v1/images/chancellor-drellik-main_f8d2e4d2.jpeg?region=0%2C0%2C1921%2C1079&width=320",
     "Nome": "Chancellor Drellik",
     "Descrição": "In the later years of the High Republic, Chancellor Drellik oversees a blossoming Galactic Republic, with representatives from all corners of the galaxy serving the Galactic Senate under his watchful leadership.",
+    "História": null,
     "Aparições": [
         "Star Wars: The Acolyte"
     ],
@@ -13,5 +14,8 @@
     ],
     "Afiliações": [
         "Galactic Republic"
-    ]
+    ],
+    "Locais": [],
+    "Armas": [],
+    "Gênero": []
 }
