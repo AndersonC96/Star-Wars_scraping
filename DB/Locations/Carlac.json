@@ -6,5 +6,15 @@
         "Star Wars: The Clone Wars",
         "Star Wars: The Acolyte"
     ],
-    "Locais": []
+    "Locais": [],
+    "Clima": [
+        "Cold"
+    ],
+    "Terreno": [
+        "Mountains",
+        "Plains"
+    ],
+    "Espécies": [
+        "Ming Po"
+    ]
 }

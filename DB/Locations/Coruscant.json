@@ -15,5 +15,19 @@
         "Star Wars: Ahsoka",
         "Star Wars: The Acolyte"
     ],
-    "Locais": []
+    "Locais": [],
+    "Clima": [
+        "Artificial",
+        "Temperate"
+    ],
+    "Terreno": [
+        "Urban"
+    ],
+    "Espécies": [
+        "Bith",
+        "Gran",
+        "Balosar",
+        "Patrolian",
+        "Mikkian"
+    ]
 }
