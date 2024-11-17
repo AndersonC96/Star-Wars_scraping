@@ -30,3 +30,8 @@ https://www.starwars.com/databank/sliro
 https://www.starwars.com/databank/vail
 https://www.starwars.com/databank/jaylen-vrax
 https://www.starwars.com/databank/nd-5
+https://www.starwars.com/databank/cal-kestis
+https://www.starwars.com/databank/bode-akuna
+https://www.starwars.com/databank/nightsister-merrin
+https://www.starwars.com/databank/cere
+https://www.starwars.com/databank/greez
