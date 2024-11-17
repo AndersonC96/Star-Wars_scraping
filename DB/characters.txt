@@ -3,7 +3,6 @@ https://www.starwars.com/databank/cabuck
 https://www.starwars.com/databank/captain-blex
 https://www.starwars.com/databank/captain-blex
 https://www.starwars.com/databank/darth-plagueis
-https://www.starwars.com/databank/dybbuk
 https://www.starwars.com/databank/elder-naasa
 https://www.starwars.com/databank/fillik
 https://www.starwars.com/databank/indara
