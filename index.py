@@ -182,33 +182,30 @@ else:
                                             veiculos.append(property_name.get_text(strip=True))
 
                 # Extrai a história
-                historia_section = soup.find('section', {'class': 'module rich_text rich-text-view no-top-padding header-left preserve-padding secondary-theme dark cols-1'})
-                if historia_section:
-                    historia_div = historia_section.find('div', {'class': 'rich-text-output'})
-                    if historia_div:
-                        paragraphs = historia_div.find_all('p')
-                        historia_text = '\n\n'.join([p.get_text(strip=True) for p in paragraphs])
-                        data['História'] = historia_text
-                    else:
-                        data['História'] = None
-                else:
-                    data['História'] = None
+                historia_divs = soup.find_all('div', {'class': 'rich-text-output'})
+                historia_text = ''
+                for historia_div in historia_divs:
+                    paragraphs = historia_div.find_all('p')
+                    for p in paragraphs:
+                        historia_text += p.get_text(strip=True) + '\n\n'
+                data['História'] = historia_text.strip() if historia_text else None
 
                 # Extrai as frases (Quotes)
-                # Procura pela seção com título 'Quotes'
-                quotes_section = soup.find('div', {'class': 'module_header no-desc'})
-                if quotes_section:
-                    title = quotes_section.find('div', {'class': 'title'})
-                    if title and title.get_text(strip=True) == 'Quotes':
-                        # Procura pelas frases na estrutura fornecida
-                        blocks_container = soup.find('div', {'class': 'blocks-container'})
-                        if blocks_container:
-                            quote_items = blocks_container.find_all('li', {'class': 'building-block-config'})
+                frases = []
+                # Procura pelas seções que contêm as frases
+                quotes_sections = soup.find_all('div', {'class': 'module_header'})
+                for q_section in quotes_sections:
+                    title = q_section.find('div', {'class': 'title'})
+                    if title and 'Quotes' in title.get_text(strip=True):
+                        # Encontrar o container das frases
+                        parent = q_section.find_next_sibling('div', {'class': 'blocks-bound'})
+                        if parent:
+                            quote_items = parent.find_all('li', {'class': 'building-block-config'})
                             for item in quote_items:
-                                # Extrai o texto da frase
                                 quote_text = item.find('p', {'class': 'desc'})
                                 if quote_text:
                                     frases.append(quote_text.get_text(strip=True))
+                        break  # Já encontramos a seção de frases
 
                 # Adiciona as informações extraídas ao dicionário de dados
                 data['Aparições'] = appearances
