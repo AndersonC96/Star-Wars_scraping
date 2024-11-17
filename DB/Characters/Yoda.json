@@ -1,0 +1,38 @@
+{
+    "Imagem": "https://lumiere-a.akamaihd.net/v1/images/Yoda-Retina_2a7ecc26.jpeg?region=0%2C0%2C1536%2C864&width=320",
+    "Nome": "Yoda",
+    "Descrição": "Yoda was a legendary Jedi Master and stronger than most in his connection with the Force. Small in size but wise and powerful, he trained Jedi for over 800 years, playing integral roles in the Clone Wars, the instruction of Luke Skywalker, and unlocking the path to immortality.",
+    "História": null,
+    "Aparições": [
+        "Star Wars: Revenge of the Sith (Episode III)",
+        "Star Wars: The Phantom Menace (Episode I)",
+        "Star Wars: The Empire Strikes Back (Episode V)",
+        "Star Wars: Attack of the Clones (Episode II)",
+        "Star Wars: Return of the Jedi (Episode VI)",
+        "Star Wars: The Clone Wars",
+        "Star Wars Rebels",
+        "Star Wars: The Acolyte"
+    ],
+    "Dimensões": [
+        "Height: 0.66m"
+    ],
+    "Espécie": [
+        "Unknown"
+    ],
+    "Afiliações": [
+        "Jedi Order"
+    ],
+    "Locais": [
+        "Yoda's Hut"
+    ],
+    "Armas": [
+        "Lightsaber",
+        "Yoda's Lightsaber"
+    ],
+    "Gênero": [
+        "Male"
+    ],
+    "Veículos": [
+        "Yoda's Fighter"
+    ]
+}
