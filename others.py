@@ -52,6 +52,14 @@ else:
                 else:
                     data['Nome'] = None
 
+                # Extrai a descrição
+                desc_tag = soup.find('p', {'class': 'desc'})
+                if desc_tag:
+                    descricao = desc_tag.get_text(strip=True)
+                    data['Descrição'] = descricao
+                else:
+                    data['Descrição'] = None
+
                 # Inicializa a lista para Aparições
                 appearances = []
 
