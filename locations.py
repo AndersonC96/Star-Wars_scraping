@@ -71,6 +71,7 @@ else:
                 droids = []
                 veiculos = []
                 armas = []
+                historia = ""
 
                 # Encontrar todos os divs com a classe 'category'
                 categories = soup.find_all('div', {'class': 'category'})
@@ -103,6 +104,14 @@ else:
                                     veiculos.append(property_name.get_text(strip=True))
                                 elif heading_text == 'Weapons' and property_name:
                                     armas.append(property_name.get_text(strip=True))
+
+                # Extrai a história
+                historia_div = soup.find('div', {'class': 'rich-text-output'})
+                if historia_div:
+                    paragraphs = historia_div.find_all('p')
+                    for p in paragraphs:
+                        historia += p.get_text(strip=True) + "\n\n"
+                data['História'] = historia.strip() if historia else None
 
                 # Adiciona as informações extraídas ao dicionário de dados
                 data['Aparições'] = appearances
