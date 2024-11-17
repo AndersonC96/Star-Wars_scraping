@@ -25,3 +25,8 @@ https://www.starwars.com/databank/vernestra-vern-rwoh
 https://www.starwars.com/databank/yoda
 https://www.starwars.com/databank/yord-fandar
 https://www.starwars.com/databank/kay-vess
+https://www.starwars.com/databank/nix
+https://www.starwars.com/databank/sliro
+https://www.starwars.com/databank/vail
+https://www.starwars.com/databank/jaylen-vrax
+https://www.starwars.com/databank/nd-5
