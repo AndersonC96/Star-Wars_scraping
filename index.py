@@ -4,7 +4,7 @@ import json
 import os
 
 # URL da página que queremos fazer o scraping
-url = "https://www.starwars.com/databank/cabuck"
+url = "https://www.starwars.com/databank/barash-vow"
 
 # Faz uma requisição HTTP GET para a URL
 response = requests.get(url)
@@ -40,11 +40,16 @@ if response.status_code == 200:
     else:
         data['Descrição'] = None
 
-    # Inicializa as listas para aparições, dimensões, espécie e afiliações
+    # Inicializa as listas para as categorias
     appearances = []
     dimensions = []
     species = []
     afiliacoes = []
+    locais = []
+    armas = []
+    genero = []
+    veiculos = []
+    historia_text = ""
 
     # Encontrar todos os divs com a classe 'category'
     categories = soup.find_all('div', {'class': 'category'})
@@ -62,13 +67,11 @@ if response.status_code == 200:
                         if a_tag:
                             property_name = a_tag.find('div', {'class': 'property-name'})
                             if property_name:
-                                appearance_name = property_name.get_text(strip=True)
-                                appearances.append(appearance_name)
+                                appearances.append(property_name.get_text(strip=True))
                         else:
                             property_name = li.find('div', {'class': 'property-name'})
                             if property_name:
-                                appearance_name = property_name.get_text(strip=True)
-                                appearances.append(appearance_name)
+                                appearances.append(property_name.get_text(strip=True))
             elif heading_text == 'Dimensions':
                 # Extrai as dimensões
                 ul = category.find('ul')
@@ -77,8 +80,7 @@ if response.status_code == 200:
                     for li in li_tags:
                         property_name = li.find('div', {'class': 'property-name'})
                         if property_name:
-                            dimension = property_name.get_text(strip=True)
-                            dimensions.append(dimension)
+                            dimensions.append(property_name.get_text(strip=True))
             elif heading_text.lower() == 'species':
                 # Extrai a espécie
                 ul = category.find('ul')
@@ -87,8 +89,7 @@ if response.status_code == 200:
                     for li in li_tags:
                         property_name = li.find('div', {'class': 'property-name'})
                         if property_name:
-                            specie = property_name.get_text(strip=True)
-                            species.append(specie)
+                            species.append(property_name.get_text(strip=True))
             elif heading_text == 'Affiliations':
                 # Extrai as afiliações
                 ul = category.find('ul')
@@ -99,22 +100,91 @@ if response.status_code == 200:
                         if a_tag:
                             property_name = a_tag.find('div', {'class': 'property-name'})
                             if property_name:
-                                affiliation_name = property_name.get_text(strip=True)
-                                afiliacoes.append(affiliation_name)
+                                afiliacoes.append(property_name.get_text(strip=True))
                         else:
                             property_name = li.find('div', {'class': 'property-name'})
                             if property_name:
-                                affiliation_name = property_name.get_text(strip=True)
-                                afiliacoes.append(affiliation_name)
+                                afiliacoes.append(property_name.get_text(strip=True))
+            elif heading_text == 'Locations':
+                # Extrai os locais
+                ul = category.find('ul')
+                if ul:
+                    li_tags = ul.find_all('li', {'class': 'data'})
+                    for li in li_tags:
+                        a_tag = li.find('a', {'class': 'section-color'})
+                        if a_tag:
+                            property_name = a_tag.find('div', {'class': 'property-name'})
+                            if property_name:
+                                locais.append(property_name.get_text(strip=True))
+                        else:
+                            property_name = li.find('div', {'class': 'property-name'})
+                            if property_name:
+                                locais.append(property_name.get_text(strip=True))
+            elif heading_text == 'Weapons':
+                # Extrai as armas
+                ul = category.find('ul')
+                if ul:
+                    li_tags = ul.find_all('li', {'class': 'data'})
+                    for li in li_tags:
+                        a_tag = li.find('a', {'class': 'section-color'})
+                        if a_tag:
+                            property_name = a_tag.find('div', {'class': 'property-name'})
+                            if property_name:
+                                armas.append(property_name.get_text(strip=True))
+                        else:
+                            property_name = li.find('div', {'class': 'property-name'})
+                            if property_name:
+                                armas.append(property_name.get_text(strip=True))
+            elif heading_text == 'Gender':
+                # Extrai o gênero
+                ul = category.find('ul')
+                if ul:
+                    li_tags = ul.find_all('li', {'class': 'data'})
+                    for li in li_tags:
+                        property_name = li.find('div', {'class': 'property-name'})
+                        if property_name:
+                            genero.append(property_name.get_text(strip=True))
+            elif heading_text == 'Vehicles':
+                # Extrai os veículos
+                ul = category.find('ul')
+                if ul:
+                    li_tags = ul.find_all('li', {'class': 'data'})
+                    for li in li_tags:
+                        a_tag = li.find('a', {'class': 'section-color'})
+                        if a_tag:
+                            property_name = a_tag.find('div', {'class': 'property-name'})
+                            if property_name:
+                                veiculos.append(property_name.get_text(strip=True))
+                        else:
+                            property_name = li.find('div', {'class': 'property-name'})
+                            if property_name:
+                                veiculos.append(property_name.get_text(strip=True))
+
+    # Extrai a história
+    historia_section = soup.find('section', {'class': 'module rich_text rich-text-view no-top-padding header-left preserve-padding secondary-theme dark cols-1'})
+    if historia_section:
+        historia_div = historia_section.find('div', {'class': 'rich-text-output'})
+        if historia_div:
+            paragraphs = historia_div.find_all('p')
+            historia_text = '\n\n'.join([p.get_text(strip=True) for p in paragraphs])
+            data['História'] = historia_text
+        else:
+            data['História'] = None
+    else:
+        data['História'] = None
 
     # Adiciona as informações extraídas ao dicionário de dados
     data['Aparições'] = appearances
     data['Dimensões'] = dimensions
     data['Espécie'] = species
     data['Afiliações'] = afiliacoes
+    data['Locais'] = locais
+    data['Armas'] = armas
+    data['Gênero'] = genero
+    data['Veículos'] = veiculos
 
     # Define o diretório onde o arquivo será salvo
-    directory = './DB/The Acolyte'
+    directory = 'personagens'
 
     # Cria o diretório se ele não existir
     if not os.path.exists(directory):
