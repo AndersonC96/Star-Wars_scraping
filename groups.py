@@ -52,6 +52,14 @@ else:
                 else:
                     data['Nome'] = None
 
+                # Extrai a descrição
+                desc_tag = soup.find('p', {'class': 'desc'})
+                if desc_tag:
+                    descricao = desc_tag.get_text(strip=True)
+                    data['Descrição'] = descricao
+                else:
+                    data['Descrição'] = None
+
                 # Inicializa listas para categorias adicionais
                 afiliacoes = []
                 locais = []
@@ -105,7 +113,7 @@ else:
                 data['Ferramentas'] = ferramentas
                 data['Recursos'] = recursos
 
-                # Nome do arquivo baseado no nome do personagem
+                # Nome do arquivo baseado no nome do grupo
                 if data['Nome']:
                     filename = ''.join(c for c in data['Nome'] if c.isalnum() or c in (' ', '_')).rstrip()
                     filename = filename.replace(' ', '_')
