@@ -13,3 +13,4 @@ https://www.starwars.com/databank/olega-jedi-temple
 https://www.starwars.com/databank/the-stranger-s-cave
 https://www.starwars.com/databank/ueda
 https://www.starwars.com/databank/unknown-world
+https://www.starwars.com/databank/koboh
