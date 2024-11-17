@@ -69,6 +69,7 @@ else:
                 armas = []
                 genero = []
                 veiculos = []
+                frases = []
                 historia_text = ""
 
                 # Encontrar todos os divs com a classe 'category'
@@ -193,6 +194,22 @@ else:
                 else:
                     data['História'] = None
 
+                # Extrai as frases (Quotes)
+                # Procura pela seção com título 'Quotes'
+                quotes_section = soup.find('div', {'class': 'module_header no-desc'})
+                if quotes_section:
+                    title = quotes_section.find('div', {'class': 'title'})
+                    if title and title.get_text(strip=True) == 'Quotes':
+                        # Procura pelas frases na estrutura fornecida
+                        blocks_container = soup.find('div', {'class': 'blocks-container'})
+                        if blocks_container:
+                            quote_items = blocks_container.find_all('li', {'class': 'building-block-config'})
+                            for item in quote_items:
+                                # Extrai o texto da frase
+                                quote_text = item.find('p', {'class': 'desc'})
+                                if quote_text:
+                                    frases.append(quote_text.get_text(strip=True))
+
                 # Adiciona as informações extraídas ao dicionário de dados
                 data['Aparições'] = appearances
                 data['Dimensões'] = dimensions
@@ -202,6 +219,7 @@ else:
                 data['Armas'] = armas
                 data['Gênero'] = genero
                 data['Veículos'] = veiculos
+                data['Frases'] = frases
 
                 # Nome do arquivo baseado no nome do personagem
                 # Substitui espaços por underscores e remove caracteres não permitidos
