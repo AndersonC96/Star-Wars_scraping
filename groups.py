@@ -4,14 +4,14 @@ import json
 import os
 
 # Define o diretório onde os arquivos serão salvos
-directory = './DB/Characters'
+directory = './DB/Groups'
 
 # Cria o diretório se ele não existir
 if not os.path.exists(directory):
     os.makedirs(directory)
 
 # Nome do arquivo que contém a lista de URLs
-url_list_file = './DB/characters.txt'
+url_list_file = './DB/groups.txt'
 
 # Verifica se o arquivo de URLs existe
 if not os.path.isfile(url_list_file):
@@ -52,24 +52,58 @@ else:
                 else:
                     data['Nome'] = None
 
-                # Inicializa a lista para Aparições
-                appearances = []
+                # Inicializa listas para categorias adicionais
+                afiliacoes = []
+                locais = []
+                droid = []
+                veiculos = []
+                armas = []
+                ferramentas = []
+                recursos = []
+                historia = ""
 
-                # Extrai as aparições
+                # Encontrar todos os divs com a classe 'category'
                 categories = soup.find_all('div', {'class': 'category'})
                 for category in categories:
                     heading = category.find('div', {'class': 'heading'})
-                    if heading and heading.get_text(strip=True) == 'Appearances':
+                    if heading:
+                        heading_text = heading.get_text(strip=True)
                         ul = category.find('ul')
                         if ul:
                             li_tags = ul.find_all('li', {'class': 'data'})
                             for li in li_tags:
                                 property_name = li.find('div', {'class': 'property-name'})
-                                if property_name:
-                                    appearances.append(property_name.get_text(strip=True))
+                                if heading_text == 'Affiliations' and property_name:
+                                    afiliacoes.append(property_name.get_text(strip=True))
+                                elif heading_text == 'Locations' and property_name:
+                                    locais.append(property_name.get_text(strip=True))
+                                elif heading_text.lower() == 'droid' and property_name:
+                                    droid.append(property_name.get_text(strip=True))
+                                elif heading_text == 'Vehicles' and property_name:
+                                    veiculos.append(property_name.get_text(strip=True))
+                                elif heading_text == 'Weapons' and property_name:
+                                    armas.append(property_name.get_text(strip=True))
+                                elif heading_text == 'Tool' and property_name:
+                                    ferramentas.append(property_name.get_text(strip=True))
+                                elif heading_text == 'Resource' and property_name:
+                                    recursos.append(property_name.get_text(strip=True))
+
+                # Extrai a história
+                historia_div = soup.find('div', {'class': 'rich-text-output'})
+                if historia_div:
+                    paragraphs = historia_div.find_all('p')
+                    for p in paragraphs:
+                        historia += p.get_text(strip=True) + "\n\n"
+                data['História'] = historia.strip() if historia else None
 
                 # Adiciona as informações extraídas ao dicionário de dados
-                data['Aparições'] = appearances
+                data['Afiliações'] = afiliacoes
+                data['Locais'] = locais
+                data['Droid'] = droid
+                data['Veículos'] = veiculos
+                data['Armas'] = armas
+                data['Ferramentas'] = ferramentas
+                data['Recursos'] = recursos
 
                 # Nome do arquivo baseado no nome do personagem
                 if data['Nome']:
