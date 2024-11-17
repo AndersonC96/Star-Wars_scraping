@@ -193,19 +193,22 @@ else:
                 # Extrai as frases (Quotes)
                 frases = []
                 # Procura pelas seções que contêm as frases
-                quotes_sections = soup.find_all('div', {'class': 'module_header'})
-                for q_section in quotes_sections:
-                    title = q_section.find('div', {'class': 'title'})
-                    if title and 'Quotes' in title.get_text(strip=True):
-                        # Encontrar o container das frases
-                        parent = q_section.find_next_sibling('div', {'class': 'blocks-bound'})
-                        if parent:
-                            quote_items = parent.find_all('li', {'class': 'building-block-config'})
-                            for item in quote_items:
-                                quote_text = item.find('p', {'class': 'desc'})
-                                if quote_text:
-                                    frases.append(quote_text.get_text(strip=True))
-                        break  # Já encontramos a seção de frases
+                bound_sections = soup.find_all('div', {'class': 'bound'})
+                for bound in bound_sections:
+                    # Verifica se o bound contém a seção de Quotes
+                    module_header = bound.find('div', {'class': 'module_header'})
+                    if module_header:
+                        title_div = module_header.find('div', {'class': 'title'})
+                        if title_div and 'Quotes' in title_div.get_text(strip=True):
+                            # Encontrar o container das frases dentro deste bound
+                            blocks_bound = bound.find('div', {'class': 'blocks-bound'})
+                            if blocks_bound:
+                                quote_items = blocks_bound.find_all('li', {'class': 'building-block-config'})
+                                for item in quote_items:
+                                    quote_text = item.find('p', {'class': 'desc'})
+                                    if quote_text:
+                                        frases.append(quote_text.get_text(strip=True))
+                            break  # Já encontramos a seção de frases
 
                 # Adiciona as informações extraídas ao dicionário de dados
                 data['Aparições'] = appearances
