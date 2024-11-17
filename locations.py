@@ -4,14 +4,14 @@ import json
 import os
 
 # Define o diretório onde os arquivos serão salvos
-directory = './DB/Characters'
+directory = './DB/Locations'
 
 # Cria o diretório se ele não existir
 if not os.path.exists(directory):
     os.makedirs(directory)
 
 # Nome do arquivo que contém a lista de URLs
-url_list_file = './DB/characters.txt'
+url_list_file = './DB/locations.txt'
 
 # Verifica se o arquivo de URLs existe
 if not os.path.isfile(url_list_file):
