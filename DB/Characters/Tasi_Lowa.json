@@ -2,18 +2,20 @@
     "Imagem": "https://lumiere-a.akamaihd.net/v1/images/tasi-lowa-main_ff394580.jpeg?region=0%2C0%2C1620%2C910&width=320",
     "Nome": "Tasi Lowa",
     "Descrição": "Tasi Lowa is a studious Padawan stationed at the Jedi Temple on Coruscant. Apprenticed to Jedi Knight Yord Fandar, Tasi is instrumental in a mission to arrest Osha Aniseya.",
+    "História": null,
     "Aparições": [
         "Star Wars: The Acolyte"
     ],
-    "Locais": [],
-    "Clima": [],
-    "Terreno": [],
-    "Espécies": [
+    "Dimensões": [
+        "Height: 1.6m"
+    ],
+    "Espécie": [
         "Zygerrian"
     ],
     "Afiliações": [],
-    "Criaturas": [],
-    "Droid": [],
+    "Locais": [],
+    "Armas": [],
+    "Gênero": [],
     "Veículos": [],
-    "Armas": []
+    "Frases": []
 }

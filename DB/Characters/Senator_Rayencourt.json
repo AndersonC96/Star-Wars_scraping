@@ -2,16 +2,18 @@
     "Imagem": "https://lumiere-a.akamaihd.net/v1/images/senator-rayencourt-main_f76f6472.jpeg?region=0%2C0%2C1921%2C1079&width=320",
     "Nome": "Senator Rayencourt",
     "Descrição": "In the age of the High Republic, Senator Rayencourt has his doubts about the nobility of the Jedi Order and the abilities of its individual members to truly keep their emotions in check. Rayencourt is a suspicious representative who lacks faith in the very organization that others see as heroes. When rumors of a Jedi murder investigation reach him, Rayencourt goes directly to Jedi Master Vernestra Rwoh for answers, but only after he’s reported the Jedi’s secrecy to the chancellor.",
+    "História": null,
     "Aparições": [
         "Star Wars: The Acolyte"
     ],
-    "Locais": [],
-    "Clima": [],
-    "Terreno": [],
-    "Espécies": [],
+    "Dimensões": [
+        "Height: 1.78m"
+    ],
+    "Espécie": [],
     "Afiliações": [],
-    "Criaturas": [],
-    "Droid": [],
+    "Locais": [],
+    "Armas": [],
+    "Gênero": [],
     "Veículos": [],
-    "Armas": []
+    "Frases": []
 }

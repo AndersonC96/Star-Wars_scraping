@@ -2,16 +2,18 @@
     "Imagem": "https://lumiere-a.akamaihd.net/v1/images/senator-chuwant-main_f654d36f.jpeg?region=426%2C159%2C1148%2C645&width=320",
     "Nome": "Senator Isedwa Chuwant",
     "Descrição": "A member of the Galactic Senate and representative of Abednedo in the time of the High Republic, Senator Isedwa Chuwant is a trusted ally of Jedi Master Vernestra Rwoh.",
+    "História": null,
     "Aparições": [
         "Star Wars: The Acolyte"
     ],
-    "Locais": [],
-    "Clima": [],
-    "Terreno": [],
-    "Espécies": [],
+    "Dimensões": [
+        "Height: 1.87m"
+    ],
+    "Espécie": [],
     "Afiliações": [],
-    "Criaturas": [],
-    "Droid": [],
+    "Locais": [],
+    "Armas": [],
+    "Gênero": [],
     "Veículos": [],
-    "Armas": []
+    "Frases": []
 }
