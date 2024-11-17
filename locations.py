@@ -60,9 +60,12 @@ else:
                 else:
                     data['Descrição'] = None
 
-                # Inicializa listas para Aparições e Locais
+                # Inicializa listas para Aparições, Locais, Clima, Terreno e Espécies
                 appearances = []
                 locais = []
+                clima = []
+                terreno = []
+                species = []
 
                 # Encontrar todos os divs com a classe 'category'
                 categories = soup.find_all('div', {'class': 'category'})
@@ -88,13 +91,42 @@ else:
                                     property_name = li.find('div', {'class': 'property-name'})
                                     if property_name:
                                         locais.append(property_name.get_text(strip=True))
+                        elif heading_text == 'Climate':
+                            # Extrai o clima
+                            ul = category.find('ul')
+                            if ul:
+                                li_tags = ul.find_all('li', {'class': 'data'})
+                                for li in li_tags:
+                                    property_name = li.find('div', {'class': 'property-name'})
+                                    if property_name:
+                                        clima.append(property_name.get_text(strip=True))
+                        elif heading_text == 'Terrain':
+                            # Extrai o terreno
+                            ul = category.find('ul')
+                            if ul:
+                                li_tags = ul.find_all('li', {'class': 'data'})
+                                for li in li_tags:
+                                    property_name = li.find('div', {'class': 'property-name'})
+                                    if property_name:
+                                        terreno.append(property_name.get_text(strip=True))
+                        elif heading_text.lower() == 'species':
+                            # Extrai as espécies
+                            ul = category.find('ul')
+                            if ul:
+                                li_tags = ul.find_all('li', {'class': 'data'})
+                                for li in li_tags:
+                                    property_name = li.find('div', {'class': 'property-name'})
+                                    if property_name:
+                                        species.append(property_name.get_text(strip=True))
 
                 # Adiciona as informações extraídas ao dicionário de dados
                 data['Aparições'] = appearances
                 data['Locais'] = locais
+                data['Clima'] = clima
+                data['Terreno'] = terreno
+                data['Espécies'] = species
 
                 # Nome do arquivo baseado no nome do personagem
-                # Substitui espaços por underscores e remove caracteres não permitidos
                 if data['Nome']:
                     filename = ''.join(c for c in data['Nome'] if c.isalnum() or c in (' ', '_')).rstrip()
                     filename = filename.replace(' ', '_')
