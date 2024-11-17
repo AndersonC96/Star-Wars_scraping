@@ -29,5 +29,34 @@
         "Balosar",
         "Patrolian",
         "Mikkian"
+    ],
+    "Afiliações": [
+        "Coruscant Guard",
+        "Coruscant Underworld Police",
+        "D-Squad",
+        "Galactic Empire",
+        "Galactic Senate",
+        "Jedi Order",
+        "Jedi Temple Guard",
+        "Senate Guard",
+        "Jedi Youngling",
+        "Bear Clan"
+    ],
+    "Criaturas": [
+        "Kouhun"
+    ],
+    "Droid": [
+        "Crime Scene Analysis Droid"
+    ],
+    "Veículos": [
+        "Coruscant Air Taxi",
+        "Crucible",
+        "Republic Cruiser",
+        "Patrol Transport",
+        "AA-9 Coruscant freighter",
+        "XJ-6 Airspeeder"
+    ],
+    "Armas": [
+        "Lightsaber Pike"
     ]
 }

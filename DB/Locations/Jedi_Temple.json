@@ -16,5 +16,14 @@
     "Locais": [],
     "Clima": [],
     "Terreno": [],
-    "Espécies": []
+    "Espécies": [],
+    "Afiliações": [
+        "Jedi Order",
+        "Jedi Temple Guard",
+        "Bear Clan"
+    ],
+    "Criaturas": [],
+    "Droid": [],
+    "Veículos": [],
+    "Armas": []
 }

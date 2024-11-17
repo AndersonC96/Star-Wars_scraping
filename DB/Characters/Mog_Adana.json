@@ -2,18 +2,16 @@
     "Imagem": "https://lumiere-a.akamaihd.net/v1/images/mog-adana-main_15dd087a.jpeg?region=283%2C0%2C1430%2C804&width=320",
     "Nome": "Mog Adana",
     "Descrição": "A Padawan stationed at the Temple on Coruscant, Mog Adana is deferential to his elders but not afraid to speak truth to power.",
-    "História": null,
     "Aparições": [
         "Star Wars: The Acolyte"
     ],
-    "Dimensões": [
-        "Height: 1.85m"
-    ],
-    "Espécie": [],
-    "Afiliações": [],
     "Locais": [],
-    "Armas": [],
-    "Gênero": [],
+    "Clima": [],
+    "Terreno": [],
+    "Espécies": [],
+    "Afiliações": [],
+    "Criaturas": [],
+    "Droid": [],
     "Veículos": [],
-    "Frases": []
+    "Armas": []
 }

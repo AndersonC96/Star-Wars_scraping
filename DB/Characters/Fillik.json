@@ -2,18 +2,16 @@
     "Imagem": "https://lumiere-a.akamaihd.net/v1/images/fillik-main_781494f8.jpeg?region=0%2C0%2C1430%2C804&width=320",
     "Nome": "Fillik",
     "Descrição": "Unfazed by the inherent dangers of life as a meknek, Fillik instead revels in the unique opportunity to see the galaxy while traveling aboard a Neimoidian freighter.",
-    "História": null,
     "Aparições": [
         "Star Wars: The Acolyte"
     ],
-    "Dimensões": [
-        "Height: 1.78m"
-    ],
-    "Espécie": [],
-    "Afiliações": [],
     "Locais": [],
-    "Armas": [],
-    "Gênero": [],
+    "Clima": [],
+    "Terreno": [],
+    "Espécies": [],
+    "Afiliações": [],
+    "Criaturas": [],
+    "Droid": [],
     "Veículos": [],
-    "Frases": []
+    "Armas": []
 }
