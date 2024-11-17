@@ -63,6 +63,7 @@ else:
                 # Inicializa as listas para Aparições e Afiliações
                 appearances = []
                 afiliacoes = []
+                historia_text = ""
 
                 # Procura por categorias na página
                 categories = soup.find_all('div', {'class': 'category'})
@@ -86,6 +87,14 @@ else:
                                     property_name = li.find('div', {'class': 'property-name'})
                                     if property_name:
                                         afiliacoes.append(property_name.get_text(strip=True))
+
+                # Extrai a história
+                historia_divs = soup.find_all('div', {'class': 'rich-text-output'})
+                for historia_div in historia_divs:
+                    paragraphs = historia_div.find_all('p')
+                    for p in paragraphs:
+                        historia_text += p.get_text(strip=True) + "\n\n"
+                data['História'] = historia_text.strip() if historia_text else None
 
                 # Adiciona as informações ao dicionário de saída
                 data['Aparições'] = appearances
