@@ -52,20 +52,40 @@ else:
                 else:
                     data['Nome'] = None
 
-                # Extrai as aparições
+                # Inicializa listas para Aparições e Dimensões
                 appearances = []
+                dimensions = {}
+
+                # Procura por categorias na página
                 categories = soup.find_all('div', {'class': 'category'})
                 for category in categories:
                     heading = category.find('div', {'class': 'heading'})
-                    if heading and heading.get_text(strip=True) == 'Appearances':
-                        ul = category.find('ul')
-                        if ul:
-                            li_tags = ul.find_all('li', {'class': 'data'})
-                            for li in li_tags:
-                                property_name = li.find('div', {'class': 'property-name'})
-                                if property_name:
-                                    appearances.append(property_name.get_text(strip=True))
+                    if heading:
+                        heading_text = heading.get_text(strip=True)
+                        if heading_text == 'Appearances':
+                            ul = category.find('ul')
+                            if ul:
+                                li_tags = ul.find_all('li', {'class': 'data'})
+                                for li in li_tags:
+                                    property_name = li.find('div', {'class': 'property-name'})
+                                    if property_name:
+                                        appearances.append(property_name.get_text(strip=True))
+                        elif heading_text == 'Dimensions':
+                            ul = category.find('ul')
+                            if ul:
+                                li_tags = ul.find_all('li', {'class': 'data'})
+                                for li in li_tags:
+                                    property_name = li.find('div', {'class': 'property-name'})
+                                    if property_name:
+                                        # Divide as dimensões em chave-valor (e.g., "Height: 20.45m")
+                                        dimension_parts = property_name.get_text(strip=True).split(':', 1)
+                                        if len(dimension_parts) == 2:
+                                            key, value = dimension_parts
+                                            dimensions[key.strip()] = value.strip()
+
+                # Adiciona as informações ao dicionário de saída
                 data['Aparições'] = appearances
+                data['Dimensões'] = dimensions
 
                 # Nome do arquivo baseado no nome do personagem
                 if data['Nome']:
