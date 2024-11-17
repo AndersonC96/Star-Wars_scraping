@@ -24,3 +24,4 @@ https://www.starwars.com/databank/torbin
 https://www.starwars.com/databank/vernestra-vern-rwoh
 https://www.starwars.com/databank/yoda
 https://www.starwars.com/databank/yord-fandar
+https://www.starwars.com/databank/kay-vess
